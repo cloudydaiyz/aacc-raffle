@@ -1,5 +1,7 @@
 # For virtual environments, remember to use source .venv/bin/activate
 # NOTE: don't include credentials.json and token.json in github push
+
+# NOTE: May have to change some package dependencies in Pipfile to "*"
 from __future__ import print_function
 
 import os.path
@@ -17,7 +19,7 @@ from googleapiclient.errors import HttpError
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-# NOTE: include variables SPREADSHEET_ID and RANGE_NAME in a separate python
+# NOTE: include variables SPREADSHEET_IDS and RANGE_NAME in a separate python
 # file called "confidential.py". Also ensure that you have a credentials.json
 # file.
 
@@ -57,10 +59,6 @@ def obtain_sheet_info(creds, sheetID):
             print('No data found.')
             return
 
-        # print('Name, Major:')
-        # for row in values:
-        #     # Print columns A and E, which correspond to indices 0 and 4.
-        #     print('%s, %s' % (row[0], row[1]))
     except HttpError as err:
         print(err)
     
